@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bixis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bixis.each do |bixi| %>
+      <tr>
+        <td><%= link_to 'Show', bixi %></td>
+        <td><%= link_to 'Edit', edit_bixi_path(bixi) %></td>
+        <td><%= link_to 'Destroy', bixi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bixi', new_bixi_path %>
+
+
+
