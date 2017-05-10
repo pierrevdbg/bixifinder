@@ -17,7 +17,7 @@ class BixisControllerTest < ActionDispatch::IntegrationTest
 
   test "should create bixi" do
     assert_difference('Bixi.count') do
-      post bixis_url, params: { bixi: {  } }
+      post bixis_url, params: { bixi: { installDate: @bixi.installDate, installed: @bixi.installed, lastCommWithServer: @bixi.lastCommWithServer, lastUpdateTime: @bixi.lastUpdateTime, lat: @bixi.lat, locked: @bixi.locked, long: @bixi.long, name: @bixi.name, nbBikes: @bixi.nbBikes, nbEmptyDocks: @bixi.nbEmptyDocks, public: @bixi.public, removalDate: @bixi.removalDate, station_id: @bixi.station_id, temporary: @bixi.temporary, terminalName: @bixi.terminalName } }
     end
 
     assert_redirected_to bixi_url(Bixi.last)
@@ -34,7 +34,7 @@ class BixisControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bixi" do
-    patch bixi_url(@bixi), params: { bixi: {  } }
+    patch bixi_url(@bixi), params: { bixi: { installDate: @bixi.installDate, installed: @bixi.installed, lastCommWithServer: @bixi.lastCommWithServer, lastUpdateTime: @bixi.lastUpdateTime, lat: @bixi.lat, locked: @bixi.locked, long: @bixi.long, name: @bixi.name, nbBikes: @bixi.nbBikes, nbEmptyDocks: @bixi.nbEmptyDocks, public: @bixi.public, removalDate: @bixi.removalDate, station_id: @bixi.station_id, temporary: @bixi.temporary, terminalName: @bixi.terminalName } }
     assert_redirected_to bixi_url(@bixi)
   end
 

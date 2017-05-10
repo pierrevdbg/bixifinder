@@ -1,4 +1,79 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Station:</strong>
+  <%= @bixi.station_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bixi.name %>
+</p>
+
+<p>
+  <strong>Terminalname:</strong>
+  <%= @bixi.terminalName %>
+</p>
+
+<p>
+  <strong>Lastcommwithserver:</strong>
+  <%= @bixi.lastCommWithServer %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @bixi.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @bixi.long %>
+</p>
+
+<p>
+  <strong>Installed:</strong>
+  <%= @bixi.installed %>
+</p>
+
+<p>
+  <strong>Locked:</strong>
+  <%= @bixi.locked %>
+</p>
+
+<p>
+  <strong>Installdate:</strong>
+  <%= @bixi.installDate %>
+</p>
+
+<p>
+  <strong>Removaldate:</strong>
+  <%= @bixi.removalDate %>
+</p>
+
+<p>
+  <strong>Temporary:</strong>
+  <%= @bixi.temporary %>
+</p>
+
+<p>
+  <strong>Public:</strong>
+  <%= @bixi.public %>
+</p>
+
+<p>
+  <strong>Nbbikes:</strong>
+  <%= @bixi.nbBikes %>
+</p>
+
+<p>
+  <strong>Nbemptydocks:</strong>
+  <%= @bixi.nbEmptyDocks %>
+</p>
+
+<p>
+  <strong>Lastupdatetime:</strong>
+  <%= @bixi.lastUpdateTime %>
+</p>
+
 <%= link_to 'Edit', edit_bixi_path(@bixi) %> |
 <%= link_to 'Back', bixis_path %>

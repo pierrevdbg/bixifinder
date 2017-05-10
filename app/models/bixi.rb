@@ -19,7 +19,11 @@ class Bixi < ApplicationRecord
   # nbEmptyDocks: Nombre de bornes disponibles pour accueillir des vélos
   # lastUpdateTime: horodatage de la dernière mise à jour des données en nombres de millisecondes depuis le 1 janvier 1970.
 
-  def update_bike_stations_status
+  ##### terminal command
+  # rails generate scaffold Bixi station_id:string name:string terminalName:string lastCommWithServer:string lat:string long:string installed:string locked:string installDate:string  removalDate:string temporary:string public:string nbBikes:string nbEmptyDocks:string lastUpdateTime:string 
+
+
+  def self.update_bike_stations_status
 
     require 'net/http' 
     xml_content = Net::HTTP.get(URI.parse(BIKE_STATIONS_URL))
@@ -31,7 +35,7 @@ class Bixi < ApplicationRecord
     data['stations']['station'].each do |station|
       # puts station['terminalName']
         self.connection
-        bixi_station = Bixi.find_or_initialize_by(terminalName: station['terminalName'])
+        bixi_station = self.find_or_initialize_by(terminalName: station['terminalName'])
         # bixi_station.inspect
         bixi_station.update_attributes(
             :station_id => station["id"],
@@ -51,10 +55,7 @@ class Bixi < ApplicationRecord
             :lastUpdateTime => station["lastUpdateTime"]
         )
     end
-      
+     
   end
 
 end
-
-
-

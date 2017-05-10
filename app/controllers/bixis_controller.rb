@@ -4,6 +4,8 @@ class BixisController < ApplicationController
   # GET /bixis
   # GET /bixis.json
   def index
+
+    Bixi.update_bike_stations_status
     @bixis = Bixi.all
   end
 
@@ -69,6 +71,6 @@ class BixisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bixi_params
-      params.fetch(:bixi, {})
+      params.require(:bixi).permit(:station_id, :name, :terminalName, :lastCommWithServer, :lat, :long, :installed, :locked, :installDate, :removalDate, :temporary, :public, :nbBikes, :nbEmptyDocks, :lastUpdateTime)
     end
 end

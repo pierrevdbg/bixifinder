@@ -5,6 +5,21 @@
 <table>
   <thead>
     <tr>
+      <th>Station</th>
+      <th>Name</th>
+      <th>Terminalname</th>
+      <th>Lastcommwithserver</th>
+      <th>Lat</th>
+      <th>Long</th>
+      <th>Installed</th>
+      <th>Locked</th>
+      <th>Installdate</th>
+      <th>Removaldate</th>
+      <th>Temporary</th>
+      <th>Public</th>
+      <th>Nbbikes</th>
+      <th>Nbemptydocks</th>
+      <th>Lastupdatetime</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +27,21 @@
   <tbody>
     <% @bixis.each do |bixi| %>
       <tr>
+        <td><%= bixi.station_id %></td>
+        <td><%= bixi.name %></td>
+        <td><%= bixi.terminalName %></td>
+        <td><%= bixi.lastCommWithServer %></td>
+        <td><%= bixi.lat %></td>
+        <td><%= bixi.long %></td>
+        <td><%= bixi.installed %></td>
+        <td><%= bixi.locked %></td>
+        <td><%= bixi.installDate %></td>
+        <td><%= bixi.removalDate %></td>
+        <td><%= bixi.temporary %></td>
+        <td><%= bixi.public %></td>
+        <td><%= bixi.nbBikes %></td>
+        <td><%= bixi.nbEmptyDocks %></td>
+        <td><%= bixi.lastUpdateTime %></td>
         <td><%= link_to 'Show', bixi %></td>
         <td><%= link_to 'Edit', edit_bixi_path(bixi) %></td>
         <td><%= link_to 'Destroy', bixi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -23,6 +53,3 @@
 <br>
 
 <%= link_to 'New Bixi', new_bixi_path %>
-
-
-
