@@ -7,6 +7,7 @@ class BixisController < ApplicationController
 
     Bixi.update_bike_stations_status
     @bixis = Bixi.all
+
   end
 
   # GET /bixis/1

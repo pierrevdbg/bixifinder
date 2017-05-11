@@ -25,25 +25,26 @@ class Bixi < ApplicationRecord
 
   def self.update_bike_stations_status
 
+    ##### TODO For efficiency, data must be persisted (We should not parse all stations at each HTTP call)
+
     require 'net/http' 
     xml_content = Net::HTTP.get(URI.parse(BIKE_STATIONS_URL))
     data = Hash.from_xml(xml_content)
 
-    # puts data['stations']['LastUpdate'].inspect
-    # puts data['stations']['station'].count.inspect
+    # puts data['stations']['LastUpdate'].inspect    
+    # if data['stations']['LastUpdate']
+    
     ### LOOP to update or create the bike stations records in database for persistance    
     data['stations']['station'].each do |station|
-      # puts station['terminalName']
         self.connection
         bixi_station = self.find_or_initialize_by(terminalName: station['terminalName'])
-        # bixi_station.inspect
         bixi_station.update_attributes(
             :station_id => station["id"],
             :name => station["name"],
             :terminalName => station["terminalName"],
             :lastCommWithServer => station["lastCommWithServer"],
-            :lat => station["lat"],
-            :long => station["long"],
+            :latitude => station["lat"],
+            :longitude => station["long"],
             :installed => station["installed"],
             :locked => station["locked"],
             :installDate => station["installDate"],

@@ -13,21 +13,21 @@
 ActiveRecord::Schema.define(version: 20170510220206) do
 
   create_table "bixis", force: :cascade do |t|
-    t.string "station_id"
+    t.integer "station_id"
     t.string "name"
-    t.string "terminalName"
-    t.string "lastCommWithServer"
-    t.string "lat"
-    t.string "long"
-    t.string "installed"
-    t.string "locked"
-    t.string "installDate"
-    t.string "removalDate"
-    t.string "temporary"
-    t.string "public"
-    t.string "nbBikes"
-    t.string "nbEmptyDocks"
-    t.string "lastUpdateTime"
+    t.integer "terminalName"
+    t.date "lastCommWithServer"
+    t.float "latitude"
+    t.float "longitude"
+    t.boolean "installed"
+    t.boolean "locked"
+    t.date "installDate"
+    t.date "removalDate"
+    t.boolean "temporary"
+    t.boolean "public"
+    t.integer "nbBikes"
+    t.integer "nbEmptyDocks"
+    t.date "lastUpdateTime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

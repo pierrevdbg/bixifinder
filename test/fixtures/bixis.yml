@@ -1,35 +1,35 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  station_id: MyString
+  station_id: 1
   name: MyString
-  terminalName: MyString
-  lastCommWithServer: MyString
-  lat: MyString
-  long: MyString
-  installed: MyString
-  locked: MyString
-  installDate: MyString
-  removalDate: MyString
-  temporary: MyString
-  public: MyString
-  nbBikes: MyString
-  nbEmptyDocks: MyString
-  lastUpdateTime: MyString
+  terminalName: 1
+  lastCommWithServer: 2017-05-10
+  latitude: 1.5
+  longitude: 1.5
+  installed: false
+  locked: false
+  installDate: 2017-05-10
+  removalDate: 2017-05-10
+  temporary: false
+  public: false
+  nbBikes: 1
+  nbEmptyDocks: 1
+  lastUpdateTime: 2017-05-10
 
 two:
-  station_id: MyString
+  station_id: 1
   name: MyString
-  terminalName: MyString
-  lastCommWithServer: MyString
-  lat: MyString
-  long: MyString
-  installed: MyString
-  locked: MyString
-  installDate: MyString
-  removalDate: MyString
-  temporary: MyString
-  public: MyString
-  nbBikes: MyString
-  nbEmptyDocks: MyString
-  lastUpdateTime: MyString
+  terminalName: 1
+  lastCommWithServer: 2017-05-10
+  latitude: 1.5
+  longitude: 1.5
+  installed: false
+  locked: false
+  installDate: 2017-05-10
+  removalDate: 2017-05-10
+  temporary: false
+  public: false
+  nbBikes: 1
+  nbEmptyDocks: 1
+  lastUpdateTime: 2017-05-10

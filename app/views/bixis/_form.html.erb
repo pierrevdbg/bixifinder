@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :station_id %>
-    <%= form.text_field :station_id, id: :bixi_station_id %>
+    <%= form.number_field :station_id, id: :bixi_station_id %>
   </div>
 
   <div class="field">
@@ -23,67 +23,67 @@
 
   <div class="field">
     <%= form.label :terminalName %>
-    <%= form.text_field :terminalName, id: :bixi_terminalName %>
+    <%= form.number_field :terminalName, id: :bixi_terminalName %>
   </div>
 
   <div class="field">
     <%= form.label :lastCommWithServer %>
-    <%= form.text_field :lastCommWithServer, id: :bixi_lastCommWithServer %>
+    <%= form.date_select :lastCommWithServer, id: :bixi_lastCommWithServer %>
   </div>
 
   <div class="field">
-    <%= form.label :lat %>
-    <%= form.text_field :lat, id: :bixi_lat %>
+    <%= form.label :latitude %>
+    <%= form.text_field :latitude, id: :bixi_latitude %>
   </div>
 
   <div class="field">
-    <%= form.label :long %>
-    <%= form.text_field :long, id: :bixi_long %>
+    <%= form.label :longitude %>
+    <%= form.text_field :longitude, id: :bixi_longitude %>
   </div>
 
   <div class="field">
     <%= form.label :installed %>
-    <%= form.text_field :installed, id: :bixi_installed %>
+    <%= form.check_box :installed, id: :bixi_installed %>
   </div>
 
   <div class="field">
     <%= form.label :locked %>
-    <%= form.text_field :locked, id: :bixi_locked %>
+    <%= form.check_box :locked, id: :bixi_locked %>
   </div>
 
   <div class="field">
     <%= form.label :installDate %>
-    <%= form.text_field :installDate, id: :bixi_installDate %>
+    <%= form.date_select :installDate, id: :bixi_installDate %>
   </div>
 
   <div class="field">
     <%= form.label :removalDate %>
-    <%= form.text_field :removalDate, id: :bixi_removalDate %>
+    <%= form.date_select :removalDate, id: :bixi_removalDate %>
   </div>
 
   <div class="field">
     <%= form.label :temporary %>
-    <%= form.text_field :temporary, id: :bixi_temporary %>
+    <%= form.check_box :temporary, id: :bixi_temporary %>
   </div>
 
   <div class="field">
     <%= form.label :public %>
-    <%= form.text_field :public, id: :bixi_public %>
+    <%= form.check_box :public, id: :bixi_public %>
   </div>
 
   <div class="field">
     <%= form.label :nbBikes %>
-    <%= form.text_field :nbBikes, id: :bixi_nbBikes %>
+    <%= form.number_field :nbBikes, id: :bixi_nbBikes %>
   </div>
 
   <div class="field">
     <%= form.label :nbEmptyDocks %>
-    <%= form.text_field :nbEmptyDocks, id: :bixi_nbEmptyDocks %>
+    <%= form.number_field :nbEmptyDocks, id: :bixi_nbEmptyDocks %>
   </div>
 
   <div class="field">
     <%= form.label :lastUpdateTime %>
-    <%= form.text_field :lastUpdateTime, id: :bixi_lastUpdateTime %>
+    <%= form.date_select :lastUpdateTime, id: :bixi_lastUpdateTime %>
   </div>
 
   <div class="actions">
