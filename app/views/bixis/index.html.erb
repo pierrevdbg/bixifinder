@@ -2,14 +2,17 @@
 
 <h1>Bixi Finder</h1>
 <hr/>
-<h4>ORIGIN => FX INNOVATION location: <%= FX_INNOVATION_LATITUDE %>,<%= FX_INNOVATION_LONGITUDE %></h4>
-<p><%= Geocoder.search("#{FX_INNOVATION_LATITUDE},#{FX_INNOVATION_LONGITUDE}").first.address %></p>
+<h4>ORIGIN => <%= ORIGIN_NAME %>, location: <%= ORIGIN_LATITUDE %>,<%= ORIGIN_LONGITUDE %></h4>
+<p><%= Geocoder.search("#{ORIGIN_LATITUDE},#{ORIGIN_LONGITUDE}").first.address %></p>
 
-<h4>NEAREST AVAILABLE BIKE:</h4>
-<p> Distance: <%= @closest_bike_station.distance.round(3) %> km.</p>
-<p> Address:  <%= @closest_bike_station.address %></p>
-<p> NUMBER OF BIKES AVAILABLE AT THIS LOCATION: <%= @closest_bike_station.nbBikes %></p>
-<p> Last update:  <%= @closest_bike_station.updated_at.to_s %></p>
+<% if not @closest_bike_station.nil? %>
+	<h4>NEAREST AVAILABLE BIKE:</h4>
+	<p> Distance: <%= @closest_bike_station.distance.round(3) %> km.</p>
+	<p> Address:  <%= @closest_bike_station.address %></p>
+	<p> NUMBER OF BIKES AVAILABLE AT THIS LOCATION: <%= @closest_bike_station.nbBikes %></p>
+	<p> Last update:  <%= @closest_bike_station.updated_at.to_s %></p>
+<% end %>
+
 <hr/>
 <p>Search Bixi stations by distances in kilometers between: 
 <%= form_tag(bixis_path, method: :get) do %>
@@ -52,7 +55,7 @@ and sorted by closest proximity first.
       <tr>
         <td><%= bixi.station_id %></td>
         <td><%= bixi.name %></td>
-        <td style='font-weight:bold;'><%= bixi.distance.round(3) %></td>
+        <td style='font-weight:bold;'><%= '%.3f' % bixi.distance.round(3) %></td>
         <td><%= bixi.address %></td>
         <td><%= bixi.nbBikes %></td>
         <td><%= bixi.nbEmptyDocks %></td>

@@ -27,58 +27,61 @@ class Bixi < ApplicationRecord
 
 
   def self.update_bike_stations_status
-
     require 'net/http' 
     xml_content = Net::HTTP.get(URI.parse(BIKE_STATIONS_URL))
-    data = Hash.from_xml(xml_content)
-    
+    data = Hash.from_xml(xml_content)    
+
     ##### for efficiency, data must be persisted (We should not parse all stations at each HTTP call)
+    if closest_available_bike.nil?
+      # if database is empty, initialize it... this may take some time....
+      update_bixis(data['stations']['station'])
+      return
+    end
+    
     last_update = Time.at(data['stations']['LastUpdate'].to_f/1000).utc
     bike_updated_at = closest_available_bike.updated_at
-
     if last_update > bike_updated_at
-      ### LOOP to update or create the bike stations records in database for persistance
-      data['stations']['station'].each do |station|
-        self.connection
-        bixi_station = self.find_or_initialize_by(terminalName: station['terminalName'])
-        bixi_station.update_attributes(
-        :station_id => station["id"],
-        :name => station["name"],
-        :distance => distance_from_fxinnovation(station["lat"], station["long"]),
-        :terminalName => station["terminalName"],
-        :lastCommWithServer => station["lastCommWithServer"],
-        :latitude => station["lat"],
-        :longitude => station["long"],
-        :installed => station["installed"],
-        :locked => station["locked"],
-        :installDate => station["installDate"],
-        :removalDate => station["removalDate"],
-        :temporary => station["temporary"],
-        :public => station["public"],
-        :nbBikes => station["nbBikes"],
-        :nbEmptyDocks => station["nbEmptyDocks"],
-        :lastUpdateTime => station["lastUpdateTime"],
-        :updated_at => Time.now
-        )
-      end
-    end
-     
+      update_bixis(data['stations']['station'])
+    end     
   end
   
 
+  def self.update_bixis(stations)
+    stations.each do |station|
+      self.connection
+      bixi_station = self.find_or_initialize_by(terminalName: station['terminalName'])
+      bixi_station.update_attributes(
+      :station_id => station["id"],
+      :name => station["name"],
+      :distance => distance_from_fxinnovation(station["lat"], station["long"]),
+      :terminalName => station["terminalName"],
+      :lastCommWithServer => station["lastCommWithServer"],
+      :latitude => station["lat"],
+      :longitude => station["long"],
+      :installed => station["installed"],
+      :locked => station["locked"],
+      :installDate => station["installDate"],
+      :removalDate => station["removalDate"],
+      :temporary => station["temporary"],
+      :public => station["public"],
+      :nbBikes => station["nbBikes"],
+      :nbEmptyDocks => station["nbEmptyDocks"],
+      :lastUpdateTime => station["lastUpdateTime"],
+      :updated_at => Time.now
+      )
+    end
+  end
 
-  
+
   def self.closest_available_bike
     self.all.order(:distance).first    
   end
   
-  
-    
+     
   def self.distance_from_fxinnovation(latitude, longitude)    
-    Geocoder::Calculations.distance_between([latitude, longitude], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE], {:units => :km})
+    Geocoder::Calculations.distance_between([latitude, longitude], [ORIGIN_LATITUDE,ORIGIN_LONGITUDE], {:units => :km})
   end
   
- 
   
   def self.search(distance_min, distance_max)
     if distance_min and distance_max
