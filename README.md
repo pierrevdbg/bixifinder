@@ -1,4 +1,4 @@
-# bixifinder
+# BixiFinder
 An app to help find which BIXI stations still have available bikes near you.
 
 
@@ -36,7 +36,7 @@ Installation
 Clone the code to your machine then run these command:
 
 	bundle install
-	rails db:migration
+	rails db:migrate
 	rails server
 
 Point your browser to:
