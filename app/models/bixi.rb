@@ -44,6 +44,7 @@ class Bixi < ApplicationRecord
         bixi_station.update_attributes(
             :station_id => station["id"],
             :name => station["name"],
+            :distance => Geocoder::Calculations.distance_between([station["lat"], station["long"]], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE], {:units => :km}),
             :terminalName => station["terminalName"],
             :lastCommWithServer => station["lastCommWithServer"],
             :latitude => station["lat"],
@@ -70,7 +71,7 @@ class Bixi < ApplicationRecord
     closest_bike_station = 0
     closest_bike_station_distance = 0
     self.all.each do |bixi|
-      distance_bixi = Geocoder::Calculations.distance_between([bixi.latitude, bixi.longitude], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE])
+      distance_bixi = Geocoder::Calculations.distance_between([bixi.latitude, bixi.longitude], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE], {:units => :km})
       if distance_bixi < distance_min and bixi.nbBikes > 0
         distance_min = distance_bixi
         closest_bike_station = bixi

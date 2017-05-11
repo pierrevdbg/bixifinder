@@ -6,9 +6,7 @@ class BixisController < ApplicationController
   def index
     Bixi.update_bike_stations_status
     @closest_available_bike = Bixi.closest_available_bike
-    
-    puts @closest_available_bike[:distance].inspect
-    @bixis = Bixi.all.order(nbBikes: :desc)   
+    @bixis = Bixi.all.order(:distance)   
   end
 
   # GET /bixis/1
