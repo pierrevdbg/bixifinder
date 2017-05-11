@@ -22,6 +22,10 @@
   </div>
 
   <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address, id: :bixi_address %>
+  </div>
+  <div class="field">
     <%= form.label :terminalName %>
     <%= form.number_field :terminalName, id: :bixi_terminalName %>
   </div>

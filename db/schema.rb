@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510220206) do
+ActiveRecord::Schema.define(version: 20170511003958) do
 
   create_table "bixis", force: :cascade do |t|
     t.integer "station_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170510220206) do
     t.date "lastUpdateTime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
   end
 
 end

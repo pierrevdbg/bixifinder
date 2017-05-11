@@ -2,11 +2,18 @@
 
 <h1>Bixis</h1>
 
+<p>ORIGIN => FX INNOVATION location: <%= FX_INNOVATION_LATITUDE %>,<%= FX_INNOVATION_LONGITUDE %></p>
+<p>CLOSEST AVAILABLE BIKE distance: <%= @closest_available_bike[:distance] %></p>
+<p>CLOSEST AVAILABLE BIKE address: <%= @closest_available_bike[:station].address %></p>
+<p>NUMBER OF BIKES AVAILABLE AT THIS LOCATION: <%= @closest_available_bike[:station].nbBikes %></p>
+
 <table>
   <thead>
     <tr>
       <th>Station</th>
       <th>Name</th>
+      <th>DISTANCE</th>
+      <th>Address</th>
       <th>Terminalname</th>
       <th>Lastcommwithserver</th>
       <th>Latitude</th>
@@ -29,6 +36,8 @@
       <tr>
         <td><%= bixi.station_id %></td>
         <td><%= bixi.name %></td>
+        <td><%= Geocoder::Calculations.distance_between([bixi.latitude, bixi.longitude], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE]) %></td>
+        <td><%= bixi.address %></td>
         <td><%= bixi.terminalName %></td>
         <td><%= bixi.lastCommWithServer %></td>
         <td><%= bixi.latitude %></td>

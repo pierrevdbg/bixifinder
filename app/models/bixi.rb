@@ -1,5 +1,8 @@
 class Bixi < ApplicationRecord
   
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode, if: ->(obj){ not obj.address.present? or obj.address_changed? }  # auto-fetch address
+  
   # État des stations BIXI au format XML ### le lien pour le format json était brisé lors de la création de l'application -- PIERREV
   # URL: https://montreal.bixi.com/data/bikeStations.xml
   #
@@ -58,5 +61,25 @@ class Bixi < ApplicationRecord
     end
      
   end
+  
+
+
+  
+  def self.closest_available_bike
+    distance_min = 10000
+    closest_bike_station = 0
+    closest_bike_station_distance = 0
+    self.all.each do |bixi|
+      distance_bixi = Geocoder::Calculations.distance_between([bixi.latitude, bixi.longitude], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE])
+      if distance_bixi < distance_min and bixi.nbBikes > 0
+        distance_min = distance_bixi
+        closest_bike_station = bixi
+        closest_bike_station_distance = distance_bixi
+      end
+    end
+   {:station => closest_bike_station, :distance => closest_bike_station_distance}
+  end
+  
+  
 
 end

@@ -4,10 +4,11 @@ class BixisController < ApplicationController
   # GET /bixis
   # GET /bixis.json
   def index
-
     Bixi.update_bike_stations_status
-    @bixis = Bixi.all
-
+    @closest_available_bike = Bixi.closest_available_bike
+    
+    puts @closest_available_bike[:distance].inspect
+    @bixis = Bixi.all.order(nbBikes: :desc)   
   end
 
   # GET /bixis/1
