@@ -4,40 +4,52 @@ An app to help find which BIXI stations still have available bikes near you.
 
 # README
 
-* REQUIREMENTS
-Rails 5.1.0
-Gem 2.6.12
-Ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin16]
-
 This app was developped and tested on a Macbook pro with macOS Sierra 10.12.4 (16E195)
 
-It uses the BIXI API from open data Montreal.
-http://donnees.ville.montreal.qc.ca/dataset/bixi-etat-des-stations
+-------------
+* REQUIREMENTS
 
-It also uses the Geocoder gem to measure the distances between the stations.
-https://github.com/alexreisner/geocoder
+	Rails 5.1.0
+	Gem 2.6.12
+	Ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-darwin16]
 
-Default location is: 
-Latitude: 45.506318
-Longitude: -73.569021
-You can modifiy this in /config/initializers/geo_locations.rb
 
+It uses the BIXI API from open data Montreal:
+
+	http://donnees.ville.montreal.qc.ca/dataset/bixi-etat-des-stations
+
+It also uses the Geocoder gem to measure the distances between the stations:
+
+	https://github.com/alexreisner/geocoder
+
+Default location is:
+ 
+	Latitude: 45.506318
+	Longitude: -73.569021
+
+	You can modifiy this in /config/initializers/geo_locations.rb
+
+-------------
 * INSTALL
 
-- clone the code to your machine then run these command
-bundle install
-rails db:migration
-rails server
+Clone the code to your machine then run these command:
 
-- point your browser to:
-http://localhost:3000
+	bundle install
+	rails db:migration
+	rails server
 
-NOTE: the first page loading may take a while because the database
-is being populated with the data from the Montreal bixi dataset.
-After the initializing process in complete, 
-you should see a net increase in responsivity after each page reloads.
-An occasional slow down is possible when the app detects a change
-to the Montreal bixi dataset and updates the local database accordingly.
+Point your browser to:
+
+	http://localhost:3000
+
+> NOTE:
+> The first page loading may take a while because the database
+> is being populated with the data from the Montreal bixi dataset.
+> After the initializing process in complete, 
+> you should see a net increase in responsivity after each page reloads.
+> An occasional slow down is possible when the app detects a change
+> to the Montreal bixi dataset and updates the local database accordingly.
+ 
 
 Enjoy!
 
