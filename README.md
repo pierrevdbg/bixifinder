@@ -22,7 +22,7 @@ It also uses the Geocoder gem to measure the distances between the stations:
 
 	https://github.com/alexreisner/geocoder
 
-Default location is:
+Default origin location is:
  
 	Latitude: 45.506318
 	Longitude: -73.569021
