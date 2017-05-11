@@ -70,26 +70,23 @@ class Bixi < ApplicationRecord
   
   def self.closest_available_bike
     self.all.order(:distance).first    
-    #  closest_bike_station = 0
-    #  distance_min = 10000
-    #  self.all.each do |bixi|
-    #    if bixi.distance < distance_min and bixi.nbBikes > 0
-    #      distance_min = bixi.distance
-    #      closest_bike_station = bixi
-    #    end
-    #  end
-    # closest_bike_station
   end
   
   
-  
-  
+    
   def self.distance_from_fxinnovation(latitude, longitude)    
     Geocoder::Calculations.distance_between([latitude, longitude], [FX_INNOVATION_LATITUDE,FX_INNOVATION_LONGITUDE], {:units => :km})
   end
   
+ 
   
-  
+  def self.search(distance_min, distance_max)
+    if distance_min and distance_max
+      where('distance BETWEEN ? AND ?', distance_min, distance_max)
+    else
+      order('id DESC') 
+    end
+  end
   
 
 end

@@ -6,7 +6,16 @@ class BixisController < ApplicationController
   def index
     Bixi.update_bike_stations_status
     @closest_bike_station = Bixi.closest_available_bike
-    @bixis = Bixi.all.order(:distance)   
+
+    if params[:distance_min] and params[:distance_max]
+      if params[:distance_min].empty? or params[:distance_max].empty?
+        @bixis = Bixi.all.order(:distance) 
+      else
+        @bixis = Bixi.search(params[:distance_min], params[:distance_max]).order(:distance)
+      end
+    else
+      @bixis = Bixi.all.order(:distance) 
+    end  
   end
 
   # GET /bixis/1
@@ -71,6 +80,6 @@ class BixisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bixi_params
-      params.require(:bixi).permit(:station_id, :name, :terminalName, :lastCommWithServer, :lat, :long, :installed, :locked, :installDate, :removalDate, :temporary, :public, :nbBikes, :nbEmptyDocks, :lastUpdateTime)
+      params.require(:bixi).permit(:station_id, :name, :distance, :address, :terminalName, :lastCommWithServer, :lat, :long, :installed, :locked, :installDate, :removalDate, :temporary, :public, :nbBikes, :nbEmptyDocks, :lastUpdateTime)
     end
 end

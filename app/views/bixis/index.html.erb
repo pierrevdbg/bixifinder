@@ -1,16 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Bixi Finder</h1>
-
+<hr/>
 <h4>ORIGIN => FX INNOVATION location: <%= FX_INNOVATION_LATITUDE %>,<%= FX_INNOVATION_LONGITUDE %></h4>
 <p><%= Geocoder.search("#{FX_INNOVATION_LATITUDE},#{FX_INNOVATION_LONGITUDE}").first.address %></p>
 
-<h4>CLOSEST AVAILABLE BIKE:</h4>
-<p> Distance: <%= @closest_bike_station.distance.round(2) %> km.</p>
+<h4>NEAREST AVAILABLE BIKE:</h4>
+<p> Distance: <%= @closest_bike_station.distance.round(3) %> km.</p>
 <p> Address:  <%= @closest_bike_station.address %></p>
 <p> NUMBER OF BIKES AVAILABLE AT THIS LOCATION: <%= @closest_bike_station.nbBikes %></p>
 <p> Last update:  <%= @closest_bike_station.updated_at.to_s %></p>
-
+<hr/>
+<p>Search Bixi stations by distances in kilometers between: 
+<%= form_tag(bixis_path, method: :get) do %>
+  <%= text_field_tag :distance_min, params[:distance_min], :width => 10 %> and 
+  <%= text_field_tag :distance_max, params[:distance_max] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+Note: distances are rounded to the nearest 3 decimal point,<br/>
+and sorted by closest proximity first.
+</p>
+<% if @bixis.blank? %>
+  <h4>No result found</h4>
+<% else %>
 <table>
   <thead>
     <tr>
@@ -40,7 +52,7 @@
       <tr>
         <td><%= bixi.station_id %></td>
         <td><%= bixi.name %></td>
-        <td style='font-weight:bold;'><%= bixi.distance.round(2) %></td>
+        <td style='font-weight:bold;'><%= bixi.distance.round(3) %></td>
         <td><%= bixi.address %></td>
         <td><%= bixi.nbBikes %></td>
         <td><%= bixi.nbEmptyDocks %></td>
@@ -55,14 +67,14 @@
         <td><%= bixi.temporary %></td>
         <td><%= bixi.public %></td>
         <td><%= bixi.lastUpdateTime %></td>
-        <td><%= link_to 'Show', bixi %></td>
-        <td><%= link_to 'Edit', edit_bixi_path(bixi) %></td>
-        <td><%= link_to 'Destroy', bixi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <td><%#= link_to 'Show', bixi %></td>
+        <td><%#= link_to 'Edit', edit_bixi_path(bixi) %></td>
+        <td><%#= link_to 'Destroy', bixi, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Bixi', new_bixi_path %>
+<% end %>
+<%#= link_to 'New Bixi', new_bixi_path %>
