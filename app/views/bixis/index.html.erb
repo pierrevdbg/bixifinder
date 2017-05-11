@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bixis</h1>
+<h1>Bixi Finder</h1>
 
-<p>ORIGIN => FX INNOVATION location: <%= FX_INNOVATION_LATITUDE %>,<%= FX_INNOVATION_LONGITUDE %></p>
+<h4>ORIGIN => FX INNOVATION location: <%= FX_INNOVATION_LATITUDE %>,<%= FX_INNOVATION_LONGITUDE %></h4>
+<p><%= Geocoder.search("#{FX_INNOVATION_LATITUDE},#{FX_INNOVATION_LONGITUDE}").first.address %></p>
+
 <h4>CLOSEST AVAILABLE BIKE:</h4>
-<p> Distance: <%= @closest_available_bike[:distance].round(2) %> km.</p>
-<p> Address:  <%= @closest_available_bike[:station].address %></p>
-<p> NUMBER OF BIKES AVAILABLE AT THIS LOCATION: <%= @closest_available_bike[:station].nbBikes %></p>
+<p> Distance: <%= @closest_bike_station.distance.round(2) %> km.</p>
+<p> Address:  <%= @closest_bike_station.address %></p>
+<p> NUMBER OF BIKES AVAILABLE AT THIS LOCATION: <%= @closest_bike_station.nbBikes %></p>
+<p> Last update:  <%= @closest_bike_station.updated_at.to_s %></p>
 
 <table>
   <thead>
@@ -37,7 +40,7 @@
       <tr>
         <td><%= bixi.station_id %></td>
         <td><%= bixi.name %></td>
-        <td><%= bixi.distance.round(2) %></td>
+        <td style='font-weight:bold;'><%= bixi.distance.round(2) %></td>
         <td><%= bixi.address %></td>
         <td><%= bixi.nbBikes %></td>
         <td><%= bixi.nbEmptyDocks %></td>
