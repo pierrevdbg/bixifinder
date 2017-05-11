@@ -6,7 +6,7 @@ An app to help find which BIXI stations still have available bikes near you.
 
 This app was developped and tested on a Macbook pro with macOS Sierra 10.12.4 (16E195)
 
-REQUIREMENTS
+Requirements
 -------------
 
 	Rails 5.1.0
@@ -45,16 +45,15 @@ Point your browser to:
 
 > NOTE:
 > The first page loading may take a while because the database
-> is being populated with the data from the Montreal bixi dataset.
+> is being populated with data from the Montreal bixi dataset.
 > After the initializing process in complete, 
-> you should see a net increase in responsivity after each page reloads.
+> you should see a net increase in responsivity at page reloads.
 > An occasional slow down is possible when the app detects a change
 > to the Montreal bixi dataset and updates the local database accordingly.
  
 
 Enjoy!
 
-Pierre Vandenberghe
 
 
 
