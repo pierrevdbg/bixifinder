@@ -3,6 +3,8 @@
 one:
   station_id: 1
   name: MyString
+  distance: 1
+  address: MyString
   terminalName: 1
   lastCommWithServer: 2017-05-10
   latitude: 1.5
@@ -20,6 +22,8 @@ one:
 two:
   station_id: 1
   name: MyString
+  distance: 1
+  address: MyString
   terminalName: 1
   lastCommWithServer: 2017-05-10
   latitude: 1.5

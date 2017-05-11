@@ -54,8 +54,18 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-######----- bixifinder specific gems -----######
+
+#################################################################
+######  bixifinder specific gems --PIERREV
+#################################################################
 gem 'geocoder', '1.4.3'
+
+### to fix a bug in rails minitest plugin 
+# http://stackoverflow.com/questions/43886586/minitest-plugin-rb9-getting-wrong-number-of-arguments
+gem 'minitest', '~> 5.10', '!= 5.10.2' 
+
+
+
 
 
 
