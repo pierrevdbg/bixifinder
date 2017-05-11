@@ -6,8 +6,8 @@ An app to help find which BIXI stations still have available bikes near you.
 
 This app was developped and tested on a Macbook pro with macOS Sierra 10.12.4 (16E195)
 
+REQUIREMENTS
 -------------
-* REQUIREMENTS
 
 	Rails 5.1.0
 	Gem 2.6.12
@@ -29,8 +29,9 @@ Default location is:
 
 	You can modifiy this in /config/initializers/geo_locations.rb
 
--------------
-* INSTALL
+
+Installation
+------------
 
 Clone the code to your machine then run these command:
 
