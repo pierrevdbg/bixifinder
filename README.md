@@ -27,7 +27,7 @@ Default origin location is:
 	Latitude: 45.506318
 	Longitude: -73.569021
 
-	You can modifiy this in /config/initializers/geo_locations.rb
+	You can modify this in /config/initializers/geo_locations.rb
 
 
 Installation
