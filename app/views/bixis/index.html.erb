@@ -14,15 +14,15 @@
 <% end %>
 
 <hr/>
-<p>Search Bixi stations by distances in kilometers between: 
+<h4>Search Bixi stations by distances in kilometers between:</h4> 
 <%= form_tag(bixis_path, method: :get) do %>
   <%= text_field_tag :distance_min, params[:distance_min], :width => 10 %> and 
   <%= text_field_tag :distance_max, params[:distance_max] %>
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 Note: distances are rounded to the nearest 3 decimal point,<br/>
-and sorted by closest proximity first.
-</p>
+and sorted by closest proximity first.<br/><br/>
+
 <% if @bixis.blank? %>
   <h4>No result found</h4>
 <% else %>
@@ -56,7 +56,7 @@ and sorted by closest proximity first.
         <td><%= bixi.station_id %></td>
         <td><%= bixi.name %></td>
         <td style='font-weight:bold;'><%= '%.3f' % bixi.distance.round(3) %></td>
-        <td><%= bixi.address %></td>
+        <td style='min-width:200px;'><%= bixi.address %></td>
         <td><%= bixi.nbBikes %></td>
         <td><%= bixi.nbEmptyDocks %></td>
         <td><%= bixi.terminalName %></td>
@@ -77,7 +77,8 @@ and sorted by closest proximity first.
     <% end %>
   </tbody>
 </table>
-
+<hr/>
 <br>
+
 <% end %>
 <%#= link_to 'New Bixi', new_bixi_path %>
