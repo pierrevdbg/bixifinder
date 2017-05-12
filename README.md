@@ -55,5 +55,5 @@ Point your browser to:
 Enjoy!
 
 
-![alt text](https://cloud.githubusercontent.com/assets/44904/26005779/1d386c66-3708-11e7-81ec-81fe1a069ef7.png)
+![alt text](https://cloud.githubusercontent.com/assets/44904/26007283/c8940638-370d-11e7-97ff-7aa16a91cba0.png)
 

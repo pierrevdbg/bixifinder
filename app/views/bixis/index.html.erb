@@ -2,7 +2,7 @@
 
 <h1>Bixi Finder</h1>
 <hr/>
-<h4>ORIGIN => <%= ORIGIN_NAME %>, location: <%= ORIGIN_LATITUDE %>,<%= ORIGIN_LONGITUDE %></h4>
+<h4>ORIGIN location: <%= ORIGIN_LATITUDE %>,<%= ORIGIN_LONGITUDE %></h4>
 <p><%= Geocoder.search("#{ORIGIN_LATITUDE},#{ORIGIN_LONGITUDE}").first.address %></p>
 
 <% if not @closest_bike_station.nil? %>
